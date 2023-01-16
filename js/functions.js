@@ -94,11 +94,17 @@ while(i < finances.length) {
     i++;
 }
 const totalSum = numbersArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+const currentRow = [];
+
+// Array of profit change from month to month
+for (let j = 0; j < finances.length; j++) {
+    currentRow.push((finances[j][1] - finances[j+1][1])*-1)
+}
 
 console.log("Financial Analysis");
 console.log("----------------------------");
 console.log(`Total Months: ${finances.length}`);
 console.log(`Total: $${totalSum}`);
 console.log(`Average Change: $`);
-console.log("Financial Analysis");
-console.log("Financial Analysis");
+console.log("Greatest Increase in Profits:");
+console.log("Greatest Decrease in Profits:");
