@@ -1,3 +1,4 @@
+// Array of finances for 7 years
 var finances = [
     ['Jan-2010', 867884],
     ['Feb-2010', 984655],
@@ -87,24 +88,48 @@ var finances = [
     ['Feb-2017', 671099]
 ];
 
+// Store finance numbers in separate array
 const numbersArray = [];
 i = 0;
 while(i < finances.length) {
     numbersArray.push(finances[i][1]);
     i++;
 }
+
+// Define some variables
 const totalSum = numbersArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-const currentRow = [];
+let maxValue = 0;
+let minValue = 0;
+const profitArray = [];
+const differenceArray = [];
+const averageArray = [];
 
 // Array of profit change from month to month
-for (let j = 0; j < finances.length; j++) {
-    currentRow.push((finances[j][1] - finances[j+1][1])*-1)
+for (let j=0; j < finances.length; j++) {
+    if(j < finances.length-1){
+        differenceArray.push([finances[j],finances[j+1][1] - finances[j][1]]);
+        profitArray.push(finances[j]);
+        averageArray.push(differenceArray[j][1]);
+
+        maxProfit = Math.max(...differenceArray);
+        minProfit = Math.min(...differenceArray);
+        
+        if (differenceArray[j][1] > maxValue) {
+            max = differenceArray[j];
+            maxValue = max[1];
+        } else if (differenceArray[j][1] < minValue) {
+            min = differenceArray[j];
+            minValue = min[1];
+        }
+    } 
 }
 
+// Console log all results
+const average = differenceArray => differenceArray.reduce((a, b) => a + b) / differenceArray.length;
 console.log("Financial Analysis");
 console.log("----------------------------");
 console.log(`Total Months: ${finances.length}`);
 console.log(`Total: $${totalSum}`);
-console.log(`Average Change: $`);
-console.log("Greatest Increase in Profits:");
-console.log("Greatest Decrease in Profits:");
+console.log(`Average Change: $${Math.round(average(averageArray)* 100) / 100}`);
+console.log(`Greatest Increase in Profits: ${max[0][0]} ($${maxValue})`);
+console.log(`Greatest Decrease in Profits: ${min[0][0]} ($${minValue})`);
