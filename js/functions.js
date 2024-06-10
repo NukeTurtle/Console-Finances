@@ -1,5 +1,5 @@
 // Array of finances for 7 years
-var finances = [
+const finances = [
     ['Jan-2010', 867884],
     ['Feb-2010', 984655],
     ['Mar-2010', 322013],
@@ -133,3 +133,20 @@ console.log(`Total: $${totalSum}`);
 console.log(`Average Change: $${Math.round(average(averageArray)* 100) / 100}`);
 console.log(`Greatest Increase in Profits: ${max[0][0]} ($${maxValue})`);
 console.log(`Greatest Decrease in Profits: ${min[0][0]} ($${minValue})`);
+
+function NewDiv(text) {
+    const financesDiv = document.getElementById("finances");
+    const element = document.createElement("div");
+    
+    element.innerText = text;
+    financesDiv.appendChild(element);
+    return element;
+}
+
+NewDiv("Financial Analysis");
+NewDiv("----------------------------");
+NewDiv("Total Months: " + finances.length);
+NewDiv("Total: " + totalSum);
+NewDiv("Average Change: " + Math.round(average(averageArray) * 100) / 100);
+NewDiv("Greatest Increase in Profits: " + max[0][0] + "(" + maxValue + ")");
+NewDiv("Greatest Decrease in Profits: " + min[0][0] + "(" + minValue + ")");
