@@ -126,7 +126,7 @@ for (let j=0; j < finances.length; j++) {
 
 // Console log all results
 const average = differenceArray => differenceArray.reduce((a, b) => a + b) / differenceArray.length;
-console.log("Financial Analysis");
+console.log("Financial Analysis (from an array of arrays)");
 console.log("----------------------------");
 console.log(`Total Months: ${finances.length}`);
 console.log(`Total: $${totalSum}`);
@@ -143,7 +143,7 @@ function NewDiv(text) {
     return element;
 }
 
-NewDiv("Financial Analysis");
+NewDiv("Financial Analysis (from an array of arrays)");
 NewDiv("----------------------------");
 NewDiv("Total Months: " + finances.length);
 NewDiv("Total: " + totalSum);
